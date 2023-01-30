@@ -1,5 +1,5 @@
 import sequelize from "sequelize";
-const { STRING, INTEGER } = sequelize;
+const { STRING, FLOAT } = sequelize;
 import db from "../../config/database.js";
 
 const User = db.define("user", {
@@ -18,7 +18,7 @@ const User = db.define("user", {
         allowNull: false
     },
     balance: {
-        type: INTEGER,
+        type: FLOAT,
         defaultValue: 0
     }
 })

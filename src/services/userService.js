@@ -17,9 +17,23 @@ export class UserService {
         return newUser;
     }
 
-    async deposit(userId, amount) {
-        const user = await this.getUserById(userId);
+    async deposit(user, amount) {
         user.balance += amount;
+        return this.userRepository.updateUser(user);
+    }
+
+    async withdraw(user, amount) {
+        if (user.balance >= amount) {
+            user.balance -= amount;
+            return this.userRepository.updateUser(user);
+        } else throw "Insufficent funds! Current balance is: " + user.balance;
+    }
+
+    async checkPassword(password, hashedPassword) {
+        return bcrypt.compare(password, hashedPassword)
+    }
+
+    async updateUser(user) {
         return this.userRepository.updateUser(user);
     }
 
