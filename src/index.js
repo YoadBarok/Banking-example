@@ -4,12 +4,14 @@ import app from "./server.js";
 
 const PORT = process.env.PORT || 3000;
 
-(async () => {
+async function connect(){
     await db.sync({
         alter: false,
         force: false
     })
-})();
+};
+
+await connect();
 
 app.listen(PORT, () => {
     console.log(`Listening on ${PORT}`);

@@ -32,10 +32,10 @@ describe("Checking for valid email addresses", () => {
 
 describe("Comparing passwords to hashed passwords", () => {
     test("Should return true", async () => {
-        expect(await userService.checkPassword("abcd1234", "$2a$10$42kASpTE30GaxOgy/jPZheeEgRpPDkn1flNSvbZ1V1hvv/80nY63K")).toBe(true);
+        expect(await userService.comparePasswords("abcd1234", "$2a$10$42kASpTE30GaxOgy/jPZheeEgRpPDkn1flNSvbZ1V1hvv/80nY63K")).toBe(true);
     })
     test("Should return false", async () => {
-        expect(await userService.checkPassword("aabcd1234", "$2a$10$42kASpTE30GaxOgy/jPZheeEgRpPDkn1flNSvbZ1V1hvv/80nY63K")).toBe(false);
+        expect(await userService.comparePasswords("aabcd1234", "$2a$10$42kASpTE30GaxOgy/jPZheeEgRpPDkn1flNSvbZ1V1hvv/80nY63K")).toBe(false);
     })
 })
 

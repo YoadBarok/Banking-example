@@ -29,12 +29,18 @@ export class UserService {
         } else throw "Insufficent funds! Current balance is: " + user.balance;
     }
 
-    async checkPassword(password, hashedPassword) {
+    async comparePasswords(password, hashedPassword) {
         return bcrypt.compare(password, hashedPassword)
     }
 
+    // Checks for a valid email address.
     isValidEmail(email) {
         return /^[A-Za-z0-9._+\-\']+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}$/.test(email);
+    }
+
+    // Checks if the given password contains at least 1 of each: Uppercase letter, Lowercase letter, Digit and Special character, and the length is between 8-16
+    isValidPassword(password) {
+        return /^(?=.*\p{Ll})(?=.*\p{Lu})(?=.*[\d|@#$!%*?&])[\p{L}\d@#$!%*?&]{8,16}$/gmu.test(password);
     }
 
 
