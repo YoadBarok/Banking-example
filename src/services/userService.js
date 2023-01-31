@@ -8,7 +8,7 @@ export class UserService {
     }
 
     async getUserById(userId) {
-        return await this.userRepository.findUserById(userId);
+        return this.userRepository.findUserById(userId);
     }
 
     async saveUser(user) {
