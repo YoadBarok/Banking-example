@@ -11,7 +11,6 @@ async function connect(){
     })
 };
 
-
 await connect();
 
 app.listen(PORT, () => {
