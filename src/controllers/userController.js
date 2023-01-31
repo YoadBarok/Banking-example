@@ -11,6 +11,7 @@ export class UserController {
                 email: email,
                 password: password
             });
+            if (! userService.isValidEmail(email)) throw "Invalid email address!";
             res.status(201).json({userId: newUser.id});
         } catch (error) {
             if (error.name === "SequelizeUniqueConstraintError") {
@@ -23,8 +24,7 @@ export class UserController {
 
     async modifyBalance(req, res) {
         try {
-
-            // check whether the path is /deposit or /withdraw and remove the leading slash:
+            // Get the path: /deposit or /withdraw and remove the leading slash:
             const action = req.route.path.slice(1);
 
             const {id, amount, password} = req.body;

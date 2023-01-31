@@ -33,8 +33,8 @@ export class UserService {
         return bcrypt.compare(password, hashedPassword)
     }
 
-    async updateUser(user) {
-        return this.userRepository.updateUser(user);
+    isValidEmail(email) {
+        return /^[A-Za-z0-9._+\-\']+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}$/.test(email);
     }
 
 

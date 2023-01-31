@@ -32,7 +32,7 @@ export class UserRepositoryMock {
     saveNewUser(user) {
         const newId = Math.round(Math.random() * 1000);
         user.id = newId;
-        this.users.push()
+        this.users.push(user)
         return this.users.find(user => user.id === newId);
     }
 
